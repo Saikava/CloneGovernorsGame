@@ -1,4 +1,5 @@
 import React from 'react';
+import _ from 'lodash';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import s from './Field.scss';
@@ -11,9 +12,13 @@ class Field extends React.Component {
     }
 
     render() {
-        const { cards } = this.props;
+        const { cards, openedCards, openCard } = this.props;
         return (<div className={s.container}>
-            {cards.map(() => <Card />)}
+            {cards.map((e, i) => <Card
+                image={e.imagePath}
+                onClick={() => openCard(i)}
+                opened={_.some(openedCards, e => e === i)}
+            />)}
         </div>);
     }
 }

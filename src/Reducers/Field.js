@@ -1,18 +1,29 @@
 import { handleActions } from 'redux-actions';
-import { FIELD_GENERATE } from '../Actions/Field';
+import _ from 'lodash';
+import { FIELD_GENERATE, OPEN_CARD } from '../Actions/Field';
 import data from './data';
+import { addImagePath } from '../Helpers/cardsHelper';
 
 const initialState = {
-    cards: []
+    cards: [],
+    openedCards: []
 };
 
 const field = handleActions({
     [FIELD_GENERATE]: (state) => {
+        const withImages = data.map(addImagePath);
         return {
             ...state,
-            cards: data
+            cards: _.shuffle([...withImages, ...withImages])
         };
-    }
+    },
+    [OPEN_CARD]: (state, action) => ({
+        ...state,
+        openedCards: [
+            ...state.openedCards,
+            action.payload
+        ]
+    })
 }, initialState);
 
 export default field;
