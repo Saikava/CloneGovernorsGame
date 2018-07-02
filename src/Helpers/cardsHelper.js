@@ -16,6 +16,10 @@ export function addImagePath(card) {
     }
 }
 
+export function cardsEqual(card1, card2) {
+    return card1.name === card2.name;
+}
+
 const images = [{
     name: 'Дмитрий Артюхов',
     path: artuhov

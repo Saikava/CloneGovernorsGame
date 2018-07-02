@@ -1,14 +1,17 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import s from './Home.scss';
-import Field from './Field/Field';
+import Field from '../Field/Field';
 
-const Home = () => (
+const Home = ({ turn }) => (
     <div className={s.container}>
         <div className={s.title}>
-            ходов: 5
+            ходов: {turn}
         </div>
         <Field />
     </div>
 );
 
-export default Home;
+export default connect(
+    state => state.field
+)(Home);
