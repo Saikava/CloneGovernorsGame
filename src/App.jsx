@@ -1,12 +1,16 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Redirect, Switch } from 'react-router-dom';
 import Home from './Containers/Home/Home';
+import s from './App.scss';
 
 const App = () => (
-    <Switch>
-        <Route exact path='/' component={Home}/>
-        <Route path='/test' component={() => 'test'}/>
-    </Switch>
+    <div className={s.container}>
+        <Switch>
+            <Route exact path='/' component={Home}/>
+            <Route exact path='/result' component={() => 'test'}/>
+            <Redirect to='/' />
+        </Switch>
+    </div>
 );
 
 export default App;
