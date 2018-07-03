@@ -1,16 +1,15 @@
 import React from 'react';
-import { Route, Redirect, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
 import Home from './Containers/Home/Home';
 import s from './App.scss';
+import Result from './Containers/Result/Result';
 
-const App = () => (
+const App = ({ showResult }) => (
     <div className={s.container}>
-        <Switch>
-            <Route exact path='/' component={Home}/>
-            <Route exact path='/result' component={() => 'test'}/>
-            <Redirect to='/' />
-        </Switch>
+        {showResult ? <Result /> : <Home />}
     </div>
 );
 
-export default App;
+export default connect(
+    state => state.field
+)(App);

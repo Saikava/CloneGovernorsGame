@@ -14,7 +14,8 @@ const initialState = {
     openedCardsIndexes: [],
     move: 0,
     removedCards: [],
-    cardInModal: null
+    cardInModal: null,
+    showResult: false
 };
 
 const field = handleActions({
@@ -66,7 +67,8 @@ const field = handleActions({
     [CLOSE_MODAL]: (state) => {
         return {
             ...state,
-            cardInModal: null
+            cardInModal: null,
+            showResult: state.cards.length === state.removedCards.length * 2
         }
     }
 }, initialState);

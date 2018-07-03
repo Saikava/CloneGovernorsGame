@@ -1,16 +1,21 @@
 .container {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 15px;
+  background: url("../../Resources/Images/background.png");
+  border: solid 1px rgba(0, 0, 0, 0.1);
+  height: 100%;
+  .content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
 
-  .title {
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    text-align: center;
-    color: #000000;
-    text-transform: uppercase;
+    .title {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-align: center;
+      color: #000000;
+      text-transform: uppercase;
+    }
   }
 }

@@ -1,0 +1,43 @@
+.container {
+  background-color: #ffffff;
+  height: 100%;
+  padding: 25px;
+
+  .content {
+    margin: 0 auto;
+    height: 315px;
+    background-image: url("../../Resources/Images/result_background.png");
+    background-size: cover;
+
+    padding: 20px 35px;
+
+    img {
+      width: 84.8px;
+      height: 18px;
+
+      margin-bottom: 56px;
+    }
+
+    .title {
+      font-size: 17px;
+      font-weight: bold;
+      line-height: 1.47;
+      color: #ffffff;
+
+      margin-bottom: 5px;
+    }
+
+    .panel {
+      border-radius: 2px;
+      background-color: #ffffff;
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), inset 0 5px 0 0 #b88a57;
+
+      padding: 17px 20px 22px;
+
+      font-size: 25px;
+      font-weight: bold;
+      line-height: 1.36;
+      color: #000000;
+    }
+  }
+}

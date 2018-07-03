@@ -8,11 +8,13 @@ import * as fieldActions from '../../Actions/Field';
 
 const Home = ({ move, cardInModal, closeModal }) => (
     <div className={s.container}>
-        <div className={s.title}>
-            ходов: {move}
+        <div className={s.content}>
+            <div className={s.title}>
+                ходов: {move}
+            </div>
+            <Field />
+            {cardInModal && <Modal card={cardInModal} onAction={closeModal} />}
         </div>
-        <Field />
-        {cardInModal && <Modal card={cardInModal} onAction={closeModal} />}
     </div>
 );
 
