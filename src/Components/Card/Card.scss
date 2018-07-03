@@ -42,4 +42,9 @@ $animationDuration: 0.2s;
   &.removed {
     visibility: hidden;
   }
+
+  @media only screen and (max-width: 649px) {
+    width: 70px;
+    height: 90px;
+  }
 }
