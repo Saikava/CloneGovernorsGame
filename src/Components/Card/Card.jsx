@@ -1,13 +1,17 @@
 import React from 'react';
+import cn from 'classnames';
 import s from './Card.scss';
 
 const Card = ({ image, opened, onClick, removed }) => (
     <div
-        className={s.container}
+        className={cn(s.container, {
+            [s.opened]: opened,
+            [s.removed]: removed
+        })}
         onClick={onClick}
-        style={{ visibility: removed ? 'hidden' : 'visible'}}
     >
-        {opened && <img src={image} />}
+        <div className={s.background} />
+        <img src={image} />
     </div>
 );
 
