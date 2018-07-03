@@ -9,6 +9,8 @@
   padding: 15px;
 
   .content {
+    animation: appear 0.3s linear;
+
     margin: 0 auto;
     border-radius: 4px;
     background-color: #e3cd92;
@@ -69,5 +71,14 @@
       font-weight: bold;
       color: #ffffff;
     }
+  }
+}
+
+@keyframes appear {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
   }
 }
