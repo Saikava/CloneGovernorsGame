@@ -1,4 +1,4 @@
 ```sh
-npm run i
+npm install
 npm start
 ```
