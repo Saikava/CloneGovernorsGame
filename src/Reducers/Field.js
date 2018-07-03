@@ -3,60 +3,70 @@ import _ from 'lodash';
 import {
     FIELD_GENERATE,
     OPEN_CARD,
-    END_TURN
+    END_MOVE,
+    CLOSE_MODAL
 } from '../Actions/Field';
 import data from './data';
-import { addImagePath, cardsEqual } from '../Helpers/cardsHelper';
+import { addImagesPaths, cardsEqual } from '../Helpers/cardsHelper';
 
 const initialState = {
     cards: [],
-    openedCards: [],
-    turn: 0,
-    removedCards: []
+    openedCardsIndexes: [],
+    move: 0,
+    removedCards: [],
+    cardInModal: null
 };
 
 const field = handleActions({
     [FIELD_GENERATE]: (state) => {
-        const withImages = data.map(addImagePath);
+        const withImages = data.map(addImagesPaths);
         return {
             ...state,
             cards: _.shuffle([...withImages, ...withImages])
         };
     },
     [OPEN_CARD]: (state, action) => {
-        const { openedCards } = state;
-        if (openedCards.length > 1
-        || openedCards[0] === action.payload) {
+        const { openedCardsIndexes } = state;
+        if (openedCardsIndexes.length > 1
+        || openedCardsIndexes[0] === action.payload) {
             return state;
         }
         return {
             ...state,
-            openedCards: [
-                ...openedCards,
+            openedCardsIndexes: [
+                ...openedCardsIndexes,
                 action.payload
             ]
         }
     },
-    [END_TURN]: (state) => {
-        const { openedCards, cards } = state;
-        let { removedCards, showModal } = state;
-        if (openedCards.length === 2
-            && cardsEqual(
-                cards[openedCards[0]],
-                cards[openedCards[1]])
-        ) {
-            removedCards = [
-                ...removedCards,
-                cards[openedCards[0]]
-            ];
-            showModal = true;
+    [END_MOVE]: (state) => {
+        const { openedCardsIndexes, cards } = state;
+        let { removedCards, cardInModal } = state;
+
+        if (openedCardsIndexes.length === 2) {
+            const firstOpenedCard = cards[openedCardsIndexes[0]];
+            const secondOpenedCard = cards[openedCardsIndexes[1]];
+            if (cardsEqual(firstOpenedCard, secondOpenedCard)) {
+                removedCards = [
+                    ...removedCards,
+                    firstOpenedCard
+                ];
+                cardInModal = firstOpenedCard;
+            }
         }
+
         return {
             ...state,
-            openedCards: [],
-            turn: state.turn + 1,
+            openedCardsIndexes: [],
+            move: state.move + 1,
             removedCards,
-            showModal
+            cardInModal
+        }
+    },
+    [CLOSE_MODAL]: (state) => {
+        return {
+            ...state,
+            cardInModal: null
         }
     }
 }, initialState);

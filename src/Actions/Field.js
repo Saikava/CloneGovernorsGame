@@ -1,6 +1,7 @@
 export const FIELD_GENERATE = 'FIELD_GENERATE';
 export const OPEN_CARD = 'OPEN_CARD';
-export const END_TURN = 'END_TURN';
+export const END_MOVE = 'END_MOVE';
+export const CLOSE_MODAL = 'CLOSE_MODAL';
 
 export function generate() {
     return {
@@ -15,8 +16,14 @@ export function openCard(index) {
     }
 }
 
-export function endTurn() {
+export function endMove() {
     return {
-        type: END_TURN
+        type: END_MOVE
+    }
+}
+
+export function closeModal() {
+    return {
+        type: CLOSE_MODAL
     }
 }

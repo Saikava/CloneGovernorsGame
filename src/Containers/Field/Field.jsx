@@ -13,20 +13,20 @@ class Field extends React.Component {
     }
 
     componentDidUpdate() {
-        if (this.props.openedCards.length > 1) {
-            setTimeout(this.props.endTurn, 1000);
+        if (this.props.openedCardsIndexes.length > 1) {
+            setTimeout(this.props.endMove, 1000);
         }
     }
 
     render() {
         const {
-            cards, openedCards, openCard, removedCards
+            cards, openedCardsIndexes, openCard, removedCards
         } = this.props;
         return (<div className={s.container}>
             {cards.map((e, i) => <Card
-                image={e.imagePath}
+                image={e.previewPath}
                 onClick={() => openCard(i)}
-                opened={_.some(openedCards, oc => oc === i)}
+                opened={_.some(openedCardsIndexes, oci => oci === i)}
                 removed={_.some(removedCards, rc => cardsEqual(e, rc))}
             />)}
         </div>);

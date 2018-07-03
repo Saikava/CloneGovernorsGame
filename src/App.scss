@@ -1,12 +1,17 @@
 .container {
-  * {
-    font-family: 'Proxima Nova Cn Lt', sans-serif;
-  }
-
   width: 650px;
   height: 520px;
   border-radius: 2px;
   background-color: #f2f2f2;
+  background: url("./Resources/Images/background.png");
   border: solid 1px rgba(0, 0, 0, 0.1);
-  margin: 20px auto;
+  margin: 0 auto;
+}
+
+body {
+  margin: 0;
+
+  * {
+    font-family: 'Proxima Nova Cn Lt', sans-serif;
+  }
 }
