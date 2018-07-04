@@ -1,0 +1,1 @@
+javascript:void(function(){Object.entries(Array.from(document.getElementById('/embed/memory-governors-game').contentWindow.document.getElementsByClassName('_1YBxrULycz0dTU9OgNokAB')).reduce((g, e) => { (g[e.style.backgroundImage] = g[e.style.backgroundImage] || []).push(e); return g; }, {})).map(e => { e[1][0].click(); e[1][1].click()})}())
