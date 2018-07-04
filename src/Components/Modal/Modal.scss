@@ -1,5 +1,6 @@
 .container {
   position: absolute;
+  z-index: 2;
   width: calc(100% - 30px);
   height: calc(100% - 20px);
   top: 0;
